@@ -245,6 +245,9 @@ fi
 <% config_files.each do |path| -%>
 %config(noreplace) <%= rpm_file_entry(path) %>
 <% end -%>
+<% rpm_config_files_replace.each do |path| -%>
+%config <%= rpm_file_entry(path) %>
+<% end -%>
 <%# list directories %>
 <% directories.each do |path| -%>
 %dir <%= rpm_file_entry(path) %>

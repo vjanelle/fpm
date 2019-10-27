@@ -117,10 +117,18 @@ class FPM::Command < Clamp::Command
 
   option "--config-files", "CONFIG_FILES",
     "Mark a file in the package as being a config file. This uses 'conffiles'" \
-    " in debs and %config in rpm. If you have multiple files to mark as " \
-    "configuration files, specify this flag multiple times.  If argument is " \
+    " in debs and %config(noreplace) in rpm. If you have multiple files to mark"
+    " as configuration files, specify this flag multiple times.  If argument is " \
     "directory all files inside it will be recursively marked as config files.",
     :multivalued => true, :attribute_name => :config_files
+  option "--rpm-config-files-replace", "RPM_CONFIG_FILES_REPLACE",
+    "Mark a file in the package as being a config file. This uses %config in rpm. " \
+    "Using this flag will use the file in the update, replacing the edited file" \
+    " with the extension .rpmsave." \
+    "If you have multiple files to mark as " \
+    "configuration files, specify this flag multiple times.  If argument is " \
+    "directory all files inside it will be recursively marked as config files.",
+    :multivalued => true, :attribute_name => :rpm_config_files_replace
   option "--directories", "DIRECTORIES", "Recursively mark a directory as being owned " \
     "by the package. Use this flag multiple times if you have multiple directories " \
     "and they are not under the same parent directory ", :multivalued => true,
